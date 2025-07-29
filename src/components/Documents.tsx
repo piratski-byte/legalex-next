@@ -4,6 +4,7 @@ import licenseIcon from "@/assets/images/icons/graduation-scroll.png";
 import diplomaIcon from "@/assets/images/icons/diploma.png";
 import rulesIcon from "@/assets/images/icons/rules.png";
 
+
 const cast = [
   {
     link: "/documents/License.pdf",
