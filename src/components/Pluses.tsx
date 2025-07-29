@@ -30,7 +30,7 @@ const Pluses = () => {
     <>
       <section
         id="Pluses"
-        className="relative flex justify-center bg-dark bg-contain bg-bottom bg-no-repeat object-center p-2 py-8 text-white lg:px-4 lg:py-16"
+        className="relative w-full flex justify-center bg-dark bg-cover bg-bottom bg-no-repeat object-center p-2 py-8 text-white lg:px-4 lg:py-16"
         style={{
           backgroundImage: "url(/backgrounds/pluses.png)",
         }}

@@ -1,36 +1,39 @@
 import Image from "next/image";
 import React from "react";
+import licenseIcon from "@/assets/images/icons/graduation-scroll.png";
+import diplomaIcon from "@/assets/images/icons/diploma.png";
+import rulesIcon from "@/assets/images/icons/rules.png";
 
 const cast = [
   {
     link: "/documents/License.pdf",
     name: "Наша лицензия",
-    icon: "/images/graduation-scroll.png",
+    icon: licenseIcon,
   },
   {
     link: "/documents/Certificate.pdf",
     name: "Свидетельство о государственной регистрации юридического лица",
-    icon: "/images/diploma.png",
+    icon: diplomaIcon,
   },
   {
     link: "/documents/InternalControl.pdf",
     name: "Правила внутреннего контроля",
-    icon: "/images/rules.png",
+    icon: rulesIcon,
   },
   {
     link: "/documents/LegalServicesRules.pdf",
     name: "Правила осуществления деятельности по оказанию юридических услуг",
-    icon: "/images/rules.png",
+    icon: rulesIcon,
   },
   {
     link: "/documents/LegalServicesRules.pdf",
     name: "Правила профессиональной этики лиц, оказывающих юридические услуги",
-    icon: "/images/rules.png",
+    icon: rulesIcon,
   },
   {
     link: "/documents/Personal.pdf",
     name: "Политика в области защиты персональных данных",
-    icon: "/images/rules.png",
+    icon: rulesIcon,
   },
 ];
 
@@ -40,7 +43,9 @@ const Documents = () => {
       <section
         id="Documents"
         className="flex justify-center bg-dark bg-contain bg-bottom bg-no-repeat px-4 py-8 text-white lg:py-16"
-        style={{ backgroundImage: "url(/images/pluses.png)" }}
+        style={{
+          backgroundImage: "url(/backgrounds/pluses.png)",
+        }}
       >
         <div className="container">
           <div>
@@ -56,7 +61,7 @@ const Documents = () => {
                 return (
                   <div
                     key={name}
-                    className="relative h-56 overflow-hidden border-2 border-dashed border-blue_light md:aspect-[1] md:h-auto xl:aspect-[2/1] [&_>_div:last-child]:hover:top-0"
+                    className="group relative h-56 overflow-hidden border-2 border-dashed border-blue_light md:aspect-[1] md:h-auto xl:aspect-[2/1]"
                   >
                     <div className="flex h-full w-full flex-col items-center gap-2 p-4 md:p-8">
                       <div className="relative z-[1] h-16 max-h-[4rem] min-h-[4rem] w-16 min-w-[4rem] max-w-[4rem] bg-blue_light">
@@ -72,7 +77,7 @@ const Documents = () => {
                         {name}
                       </span>
                     </div>
-                    <div className="absolute top-full flex h-full w-full flex-col items-center justify-center bg-blue_dark/40 bg-cover bg-center backdrop-blur-[5px] transition-all duration-300">
+                    <div className="absolute top-full flex h-full w-full flex-col items-center justify-center bg-blue_dark/40 bg-cover bg-center backdrop-blur-[5px] transition-all duration-300 group-hover:top-0">
                       <a
                         href={link}
                         target={"_blank"}
