@@ -1,5 +1,10 @@
-import Image from "next/image";
 import React, { useState } from "react";
+
+import Image from "next/image";
+import locationIcon from '@/assets/images/icons/location.png'
+import calendarIcon from '@/assets/images/icons/calendar.png'
+import phoneIcon from '@/assets/images/icons/phone.png'
+import messageIcon from '@/assets/images/icons/message.png'
 // import OrderForm from './OrderForm'
 
 const Contacts = () => {
@@ -35,7 +40,7 @@ const Contacts = () => {
                       <Image
                         width={1024}
                         height={1024}
-                        src={"/images/location.png"}
+                        src={locationIcon}
                         className="absolute left-2/4 top-2/4 h-6 w-6 -translate-x-2/4 -translate-y-2/4"
                         alt="icon-document"
                       />
@@ -55,7 +60,7 @@ const Contacts = () => {
                     <Image
                       width={1024}
                       height={1024}
-                      src={"/images/calendar.png"}
+                      src={calendarIcon}
                       className="absolute left-2/4 top-2/4 h-6 w-6 -translate-x-2/4 -translate-y-2/4"
                       alt="icon-document"
                     />
@@ -83,7 +88,7 @@ const Contacts = () => {
                       <Image
                         width={1024}
                         height={1024}
-                        src={"/images/phone.png"}
+                        src={phoneIcon}
                         className="absolute left-2/4 top-2/4 h-6 w-6 -translate-x-2/4 -translate-y-2/4"
                         alt="icon-document"
                       />
@@ -102,7 +107,7 @@ const Contacts = () => {
                       <Image
                         width={1024}
                         height={1024}
-                        src={"/images/message.png"}
+                        src={messageIcon}
                         className="absolute left-2/4 top-2/4 h-6 w-6 -translate-x-2/4 -translate-y-2/4"
                         alt="icon-document"
                       />

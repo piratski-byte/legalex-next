@@ -11,7 +11,7 @@ import Pluses from "@/components/Pluses";
 export default function Home() {
   return (
     <>
-    <Header/>
+      <Header />
       <Hero />
       <Pluses />
       <LazySection>
@@ -23,6 +23,7 @@ export default function Home() {
       <LazySection>
         <Contacts />
       </LazySection>
+      <Feedback />
       <Footer />
     </>
   );

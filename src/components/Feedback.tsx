@@ -1,47 +1,47 @@
 "use client";
 
-import React from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { useResize } from "@/hooks/useResize";
+
 import "swiper/css";
-import Image from "next/image";
-// import { useResize } from '../libs/hooks/use-resize'
 
 const clients = [
   {
-    icon: "/images/clients/1.png",
+    icon: "/feedback_clients/1.png",
   },
   {
-    icon: "/images/clients/2.svg",
+    icon: "/feedback_clients/2.svg",
   },
   {
-    icon: "/images/clients/3.png",
+    icon: "/feedback_clients/3.png",
   },
   {
-    icon: "/images/clients/4.jpg",
+    icon: "/feedback_clients/4.jpg",
   },
   {
-    icon: "/images/clients/5.png",
+    icon: "/feedback_clients/5.png",
   },
   {
-    icon: "/images/clients/6.png",
+    icon: "/feedback_clients/6.png",
   },
   {
-    icon: "/images/clients/7.jpg",
+    icon: "/feedback_clients/7.jpg",
   },
   {
-    icon: "/images/clients/8.png",
+    icon: "/feedback_clients/8.png",
   },
   {
-    icon: "/images/clients/9.png",
+    icon: "/feedback_clients/9.png",
   },
   {
-    icon: "/images/clients/10.jpg",
+    icon: "/feedback_clients/10.jpg",
   },
 ];
 
 const Feedback = () => {
-  // const resize = useResize();
+  const resize = useResize();
   return (
     <>
       <section
@@ -65,8 +65,7 @@ const Feedback = () => {
                 disableOnInteraction: false,
               }}
               loop={true}
-              // slidesPerView={resize >= 768 ? 5 : 3}
-              slidesPerView={5}
+              slidesPerView={resize >= 768 ? 5 : 3}
               modules={[Autoplay]}
               className="mt-8"
             >
@@ -75,8 +74,8 @@ const Feedback = () => {
                   <SwiperSlide key={index}>
                     <div className="flex justify-center px-4 grayscale">
                       <Image
-                        width={1024}
-                        height={1024}
+                        width={200}
+                        height={200}
                         src={client.icon}
                         className="h-20 object-contain"
                         alt="icon-client"
