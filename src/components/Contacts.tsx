@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 import Image from "next/image";
-import locationIcon from '@/assets/images/icons/location.png'
-import calendarIcon from '@/assets/images/icons/calendar.png'
-import phoneIcon from '@/assets/images/icons/phone.png'
-import messageIcon from '@/assets/images/icons/message.png'
+import locationIcon from "@/assets/images/icons/location.png";
+import calendarIcon from "@/assets/images/icons/calendar.png";
+import phoneIcon from "@/assets/images/icons/phone.png";
+import messageIcon from "@/assets/images/icons/message.png";
 // import OrderForm from './OrderForm'
 
 const Contacts = () => {
@@ -49,11 +49,14 @@ const Contacts = () => {
                       220049, г.Минск, улица Кнорина, д. 1, корп. 3, пом. 1, 2
                     </span>
                   </div>
-                  <iframe
-                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A2f9f16b8a394f7ed1d35cc11b555b572373b4d9038022b7f3bc42130a7931b90&amp;source=constructor"
-                    width="560"
-                    height="310"
-                  ></iframe>
+                  <div className="relative w-full overflow-hidden pt-[56.25%]">
+                    <iframe
+                      src="https://yandex.ru/map-widget/v1/?um=constructor%3A2f9f16b8a394f7ed1d35cc11b555b572373b4d9038022b7f3bc42130a7931b90&amp;source=constructor"
+                      className="absolute top-0 left-0 h-full w-full"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                    ></iframe>
+                  </div>
                 </div>
                 <div className="flex gap-4 lg:justify-center lg:gap-6">
                   <div className="relative z-[1] h-full max-h-[2.5rem] min-h-[2.5rem] w-full max-w-[2.5rem] bg-blue_light">
