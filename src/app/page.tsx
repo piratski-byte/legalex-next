@@ -8,10 +8,9 @@ import Hero from "@/components/Hero";
 import LazySection from "@/components/LazySection";
 import Pluses from "@/components/Pluses";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <Header />
       <Hero />
       <Pluses />
       <LazySection>
@@ -24,7 +23,8 @@ export default function Home() {
         <Contacts />
       </LazySection>
       <Feedback />
-      <Footer />
     </>
   );
-}
+};
+
+export default Home;

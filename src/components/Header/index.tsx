@@ -1,18 +1,16 @@
 "use client";
 
+import Burger from "@/assets/images/icons/bars.svg";
 import headerLinks from "@/components/Header/data/HeaderLinks";
-import { useResize } from "@/hooks/useResize";
+import { useResizeContext } from "@/store/ResizeContext";
 import Image from "next/image";
-import { useState } from "react";
 import AnchorLink from "./components/AnchorLink";
 import Contacts from "./components/Contacts";
 import DropdownLink from "./components/DropdownLink";
 import Logo from "./components/Logo";
-import SingleLink from "./components/SingleLink";
-import { useResizeContext } from "@/store/ResizeContext";
+import OrderLink from "./components/OrderLink";
 
 const Header = () => {
-  const [isActiveOrderForm, setIsActiveOrderForm] = useState(false);
   const { windowWidth: resize } = useResizeContext();
 
   return (
@@ -38,9 +36,6 @@ const Header = () => {
                           link={link.link}
                         />
                       );
-                    } else if (!link.link) {
-                      // Branch for link to order form modal
-                      return <SingleLink key={index} title={link.title} />;
                     } else {
                       // Branch for dropdown links
                       return (
@@ -54,18 +49,7 @@ const Header = () => {
                     }
                   }
 
-                  return (
-                    <button
-                      className="border-b-2 border-transparent transition-all hover:border-blue_light"
-                      type="button"
-                      key={link.title}
-                      onClick={() => {
-                        setIsActiveOrderForm(true);
-                      }}
-                    >
-                      {link.title}
-                    </button>
-                  );
+                  return <OrderLink key={link.title} title={link.title} />;
                 })}
               </div>
               <Contacts />
@@ -81,7 +65,7 @@ const Header = () => {
                 <Image
                   width={100}
                   height={100}
-                  src="/images/bars.svg"
+                  src={Burger}
                   alt="button-menu"
                   className="h-full w-full object-contain"
                 />
