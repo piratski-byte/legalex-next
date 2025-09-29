@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useResize } from "@/hooks/useResize";
+import useResize from "@/hooks/useResize";
 
 import "swiper/css";
 

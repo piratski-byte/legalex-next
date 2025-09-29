@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const useResize = () => {
+const useResize = () => {
   const [windowWidth, setWindowWidth] = useState<number>(0); // Начальное значение — 0
 
   useEffect(() => {
@@ -20,3 +20,5 @@ export const useResize = () => {
 
   return windowWidth;
 };
+
+export default useResize;

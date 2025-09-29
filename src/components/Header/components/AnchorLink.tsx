@@ -1,4 +1,4 @@
-import { handleAnchorLink } from "@/handlers/handleAnchorLink";
+import handleAnchorLink from "@/handlers/handleAnchorLink";
 import Link from "next/link";
 import { IHeaderLink } from "../data/types";
 

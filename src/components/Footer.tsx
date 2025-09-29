@@ -7,13 +7,9 @@ import calendarIcon from "@/assets/images/icons/calendar.png";
 import phoneIcon from "@/assets/images/icons/phone.png";
 import messageIcon from "@/assets/images/icons/message.png";
 import Link from "next/link";
-import { handleAnchorLink } from "@/handlers/handleAnchorLink";
-// import { Link, useLocation } from "react-router-dom";
-// import { handleAnchorLink } from './Header'
+import handleAnchorLink from "@/handlers/handleAnchorLink";
 
 const Footer = () => {
-  // const location = useLocation();
-
   return (
     <>
       <footer className="relative flex justify-center bg-blue_dark bg-contain bg-bottom bg-no-repeat object-center p-2 py-8 text-white lg:px-4 lg:py-16">

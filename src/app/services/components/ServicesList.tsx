@@ -1,14 +1,18 @@
 import { createDirectus, readItems, rest } from "@directus/sdk";
 import ServiceCard from "./ServiceCard";
 
-const directus = createDirectus("http://localhost:8055").with(
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const directus = createDirectus(API_URL ?? "").with(
   rest({
     onRequest: (options) => ({
       ...options,
-      cache: "no-store",
+      cache: "no-store", // <-- Отключает fetch-кэш
       headers: {
         ...options.headers,
-        Authorization: `Bearer NmU4NBcSzXo-KKQBgSUtRIWkxGbVFRCc`, // <-- твой токен
+        Authorization: "Bearer NmU4NBcSzXo-KKQBgSUtRIWkxGbVFRCc",
+        "Cache-Control": "no-cache, no-store, must-revalidate", // <-- Основное
+        Pragma: "no-cache", // <-- Для старых прокси
+        Expires: "0", // <-- Для совместимости
       },
     }),
   })
@@ -32,11 +36,14 @@ const ServicesList = async () => {
           </h3>
           <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
             {items?.map((service, index) => {
+              console.log(service.title);
+              const prev_image = `http://localhost:8055/assets/${service.background}`;
+
               return (
                 <ServiceCard
-                  id="1" //Added link on the CMS
+                  id={service.link}
                   key={index}
-                  preview_image={`http://localhost:8055/assets/${service.background}`}
+                  preview_image={prev_image}
                   caption={service.title}
                 />
               );

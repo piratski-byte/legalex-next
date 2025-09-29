@@ -1,5 +1,5 @@
 import logo from "@/assets/images/icons/logo-white.png";
-import { useResizeContext } from "@/store/ResizeContext";
+import { useResizeContext } from "@/context/ResizeContext";
 import Image from "next/image";
 import Link from "next/link";
 

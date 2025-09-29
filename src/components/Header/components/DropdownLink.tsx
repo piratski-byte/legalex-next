@@ -1,4 +1,4 @@
-import { handleHoverToggle } from "@/handlers/handleHoverToggle";
+import handleHoverToggle from "@/handlers/handleHoverToggle";
 import Link from "next/link";
 import { IHeaderLink } from "../data/types";
 

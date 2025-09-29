@@ -1,20 +1,9 @@
 "use client";
 
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { ResizeContext } from "./ResizeContext";
 
-interface ResizeContextType {
-  windowWidth: number;
-}
-
-const ResizeContext = createContext<ResizeContextType>({ windowWidth: 0 });
-
-const ResizeProvider = ({ children }: { children: ReactNode }) => {
+const AppProvider = ({ children }: { children: ReactNode }) => {
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -31,6 +20,4 @@ const ResizeProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const useResizeContext = () => useContext(ResizeContext);
-
-export { ResizeProvider, useResizeContext };
+export default AppProvider;

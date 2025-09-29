@@ -2,7 +2,7 @@
 
 import Burger from "@/assets/images/icons/bars.svg";
 import headerLinks from "@/components/Header/data/HeaderLinks";
-import { useResizeContext } from "@/store/ResizeContext";
+import { useResizeContext } from "@/context/ResizeContext";
 import Image from "next/image";
 import AnchorLink from "./components/AnchorLink";
 import Contacts from "./components/Contacts";
