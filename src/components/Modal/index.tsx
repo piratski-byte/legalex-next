@@ -11,6 +11,8 @@ import clsx from "clsx";
 import { IModal } from "./data/types";
 
 const Modal = ({ children, isSize, isOpen, setIsOpen }: IModal) => {
+  console.log(children);
+
   function closeModal() {
     setIsOpen(false);
   }
