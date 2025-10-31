@@ -1,13 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { IContacts } from '../modules/contact'
-import { createDirectus, readItems, rest } from '@directus/sdk'
+import React, { useState, useEffect, useRef } from "react";
+import { createDirectus, readItems, rest } from "@directus/sdk";
+
+export interface IContacts {
+  type: number;
+  service: string;
+  name: string;
+  contact: string;
+  description: string;
+}
 
 export interface IForm {
-  selectService?: number
-  sendFeedback?: (body: IContacts) => void
-  isError?: boolean
-  isSuccess?: boolean
-  isLoading?: boolean
+  selectService?: number;
+  sendFeedback?: (body: IContacts) => void;
+  isError?: boolean;
+  isSuccess?: boolean;
+  isLoading?: boolean;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -27,17 +34,23 @@ const directus = createDirectus(API_URL ?? "").with(
   })
 );
 
-const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading }: IForm) => {
-  const [isLegal, setIsLegal] = useState(false)
-  const [isPolicyShown, setIsPolicyShown] = useState(false)
-  const formRef = useRef<HTMLFormElement>(null)
+const Form = async ({
+  selectService,
+  sendFeedback,
+  isError,
+  isSuccess,
+  isLoading,
+}: IForm) => {
+  const [isLegal, setIsLegal] = useState(false);
+  const [isPolicyShown, setIsPolicyShown] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
   const items = await directus.request(readItems("services"));
 
   useEffect(() => {
     if (isError || isSuccess) {
-      formRef?.current?.reset()
+      formRef?.current?.reset();
     }
-  }, [isSuccess, isError])
+  }, [isSuccess, isError]);
 
   return (
     <>
@@ -46,7 +59,7 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
         className="grid grid-cols-1 gap-4 lg:col-span-3 lg:grid-cols-4 lg:gap-8"
         id="ContactsForm"
         onSubmit={(e) => {
-          e.preventDefault()
+          e.preventDefault();
 
           const body: IContacts = {
             //@ts-ignore
@@ -59,22 +72,24 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
             service: e.currentTarget.elements.service.value,
             //@ts-ignore
             description: e.currentTarget.elements.message.value,
-          }
+          };
 
-          sendFeedback && sendFeedback(body)
+          sendFeedback && sendFeedback(body);
         }}
       >
         <select
           id="type"
           required
           onInvalid={(e) => {
-            e.currentTarget.classList.add('invalid:border-rose-500')
-            e.currentTarget.setCustomValidity('Тип лица не выбран')
+            e.currentTarget.classList.add("invalid:border-rose-500");
+            e.currentTarget.setCustomValidity("Тип лица не выбран");
           }}
           onChange={(e) => {
-            setIsLegal(e.currentTarget.selectedIndex === 1 ? true : false)
-            setIsPolicyShown(e.currentTarget.selectedIndex === 2 ? true : false)
-            e.currentTarget.setCustomValidity('')
+            setIsLegal(e.currentTarget.selectedIndex === 1 ? true : false);
+            setIsPolicyShown(
+              e.currentTarget.selectedIndex === 2 ? true : false
+            );
+            e.currentTarget.setCustomValidity("");
           }}
           className="border-2 border-white bg-blue_light/40 px-1 py-2 text-lg text-white opacity-80 !outline-none placeholder:text-white/90 valid:border-blue_light hover:opacity-100 focus-visible:rounded-none active:opacity-100 md:px-3 md:py-4 lg:col-span-2"
         >
@@ -87,19 +102,19 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
           required
           defaultValue={selectService}
           onInvalid={(e) => {
-            e.currentTarget.classList.add('invalid:border-rose-500')
-            e.currentTarget.setCustomValidity('Специалист не выбран не выбран')
+            e.currentTarget.classList.add("invalid:border-rose-500");
+            e.currentTarget.setCustomValidity("Специалист не выбран не выбран");
           }}
           onChange={(e) => {
-            e.currentTarget.setCustomValidity('')
+            e.currentTarget.setCustomValidity("");
           }}
           className="border-2 border-white bg-blue_light/40 px-1 py-2 text-lg text-white opacity-80 !outline-none placeholder:text-white/90 valid:border-blue_light hover:opacity-100 focus-visible:rounded-none active:opacity-100 md:px-3 md:py-4 lg:col-span-2"
         >
           <option value="">Выберите тип услуги</option>
           <option value="0">Не могу выбрать тип услуги</option>
           {items?.map((item, index) => (
-            <option key={index} value={item}>
-              {item}
+            <option key={index} value={item.title}>
+              {item.title}
             </option>
           ))}
         </select>
@@ -109,11 +124,11 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
             id="name"
             name="name"
             onInvalid={(e) => {
-              e.currentTarget.classList.add('invalid:border-rose-500')
-              e.currentTarget.setCustomValidity('Название не указано')
+              e.currentTarget.classList.add("invalid:border-rose-500");
+              e.currentTarget.setCustomValidity("Название не указано");
             }}
             onChange={(e) => {
-              e.currentTarget.setCustomValidity('')
+              e.currentTarget.setCustomValidity("");
             }}
             required
             className="border-2 border-white bg-blue_light/40 px-1 py-2 text-lg text-white opacity-80 !outline-none placeholder:text-white/90 valid:border-blue_light hover:opacity-100 focus-visible:rounded-none active:opacity-100 md:px-3 md:py-4 lg:col-span-2"
@@ -126,11 +141,11 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
             type="text"
             required
             onInvalid={(e) => {
-              e.currentTarget.classList.add('invalid:border-rose-500')
-              e.currentTarget.setCustomValidity('Имя не указано')
+              e.currentTarget.classList.add("invalid:border-rose-500");
+              e.currentTarget.setCustomValidity("Имя не указано");
             }}
             onChange={(e) => {
-              e.currentTarget.setCustomValidity('')
+              e.currentTarget.setCustomValidity("");
             }}
             className="border-2 border-white bg-blue_light/40 px-1 py-2 text-lg text-white opacity-80 !outline-none placeholder:text-white/90 valid:border-blue_light hover:opacity-100 focus-visible:rounded-none active:opacity-100 md:px-3 md:py-4 lg:col-span-2"
           />
@@ -150,19 +165,24 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
           id="message"
           required
           onInvalid={(e) => {
-            e.currentTarget.classList.add('invalid:border-rose-500')
-            e.currentTarget.setCustomValidity('Описание не добавлено')
+            e.currentTarget.classList.add("invalid:border-rose-500");
+            e.currentTarget.setCustomValidity("Описание не добавлено");
           }}
           onChange={(e) => {
-            e.currentTarget.setCustomValidity('')
+            e.currentTarget.setCustomValidity("");
           }}
           className="min-h-[160px] border-2 border-white bg-blue_light/40 px-1 py-2 text-lg text-white opacity-80 !outline-none  placeholder:text-white/90 valid:border-blue_light hover:opacity-100 focus-visible:rounded-none active:opacity-100 md:min-h-[320px] md:px-3 md:py-4 lg:col-span-4"
         />
         {!isLegal && isPolicyShown && (
           <div className="flex gap-2 lg:col-span-4">
-            <input type="checkbox" id="personaldata" name="personaldata" required />
+            <input
+              type="checkbox"
+              id="personaldata"
+              name="personaldata"
+              required
+            />
             <label htmlFor="personaldata">
-              Я ознакомлен с{' '}
+              Я ознакомлен с{" "}
               <a
                 href="/documents/Personal.pdf"
                 target="_blank"
@@ -170,7 +190,7 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
                 className="font-bold hover:underline hover:underline-offset-2"
               >
                 Политикой в области обработки персональных данных
-              </a>{' '}
+              </a>{" "}
               и даю своё согласие на их обработку
             </label>
           </div>
@@ -183,7 +203,7 @@ const Form = async ({ selectService, sendFeedback, isError, isSuccess, isLoading
         </button>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;

@@ -9,7 +9,7 @@ const directus = createDirectus(API_URL ?? "").with(
       cache: "no-store", // <-- Отключает fetch-кэш
       headers: {
         ...options.headers,
-        Authorization: "Bearer NmU4NBcSzXo-KKQBgSUtRIWkxGbVFRCc",
+        Authorization: "Bearer TrznMGcpj3im0Uy8dwdyhAeFrxL1gX2V",
         "Cache-Control": "no-cache, no-store, must-revalidate", // <-- Основное
         Pragma: "no-cache", // <-- Для старых прокси
         Expires: "0", // <-- Для совместимости
