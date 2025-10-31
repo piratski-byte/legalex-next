@@ -1,20 +1,12 @@
 import { createDirectus, readItems, rest, staticToken } from "@directus/sdk";
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-} from "@headlessui/react";
-import clsx from "clsx";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import ServiceCategories from "../components/ServiceCategories";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 const TOKEN = "TrznMGcpj3im0Uy8dwdyhAeFrxL1gX2V";
 
-export const directus = createDirectus(API_URL)
-  .with(rest())
-  .with(staticToken(TOKEN));
+const directus = createDirectus(API_URL).with(rest()).with(staticToken(TOKEN));
 
 interface Props {
   params: Promise<{ link: string }>;
